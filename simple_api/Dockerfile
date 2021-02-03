@@ -8,3 +8,6 @@ VOLUME /data
 EXPOSE 5000
 
 CMD [ "python", "./student_age.py" ]
+
+#docker run --name test-cont -d -p 4000:5000 --mount type=bind,source="$(pwd)"/student_age.json,target=/data/student_age.json test-image
+#curl -u toto:python -X GET http://10.0.0.3:4000/pozos/api/v1.0/get_student_ages
