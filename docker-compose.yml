@@ -1,0 +1,25 @@
+version: '2'
+services:
+  frontend-web:
+    image: php:apache 
+    depends_on:
+      - backend-api
+    environment:
+      - USERNAME=admin
+      - PASSWORD=admin
+    volumes:
+      - ./website:/var/www/html
+    ports:
+     - 8000:80
+    networks:
+      - list_network
+  backend-api:
+    image: test-image:latest
+    ports:
+      - 4000:5000
+    volumes:
+      - ./website/student_age.json:/data/student_age.json
+    networks:
+      - list_network
+networks:
+  list_network:
